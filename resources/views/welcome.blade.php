@@ -98,7 +98,11 @@
 
           fetch("/complete/" + payload.nonce, {method: "post", headers: {"X-CSRF-Token": '{{csrf_token()}}'}})
             .then((response) => {
-              alert('Success!');
+              if (response.status === 200) {
+                alert('Success!');
+              } else {
+                alert('Failed!');
+              }
             })
             .catch((error) => {
               alert('Failed!');
